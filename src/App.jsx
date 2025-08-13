@@ -5,6 +5,7 @@ import LogoUploader from './components/LogoUploader'
 import LogoSelector, { getPresetLogoDataUrl } from './components/LogoSelector'
 import BadgePreview from './components/BadgePreview'
 import { svgUrlToPngDataUrl } from './utils/svgToPng'
+import Banner from "./components/Banner";
 
 
 export default function App() {
@@ -103,7 +104,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 p-6 absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808014_1px,transparent_1px),linear-gradient(to_bottom,#80808014_1px,transparent_1px)] bg-[size:14px_24px]">
       <div className="max-w-6xl mx-auto bg-white p-6 rounded shadow">
         <header className="flex items-center justify-between mb-4">
           <h1 className="text-2xl font-bold">{t('Palestine Support Badges')}</h1>
@@ -206,6 +207,7 @@ export default function App() {
           </aside>
         </main>
       </div>
+      <Banner />
     </div>
   )
 }
