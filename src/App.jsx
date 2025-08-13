@@ -103,13 +103,31 @@ export default function App() {
     <div className="min-h-screen bg-gray-50 p-6 inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808014_1px,transparent_1px),linear-gradient(to_bottom,#80808014_1px,transparent_1px)] bg-[size:14px_24px]">
       <div className="max-w-6xl mx-auto bg-white p-6 rounded shadow">
         <header className="flex items-center justify-between mb-12">
-          <h1 className="text-4xl font-bold"><span class="text-transparent bg-clip-text bg-gradient-to-r to-[#E4312b] from-[#149954]">Palestine Support</span> Badges</h1>
-          <div className="flex items-center gap-3">
-            <label className="text-sm">{t('Language')}:</label>
-            <select value={i18n.language} onChange={e => i18n.changeLanguage(e.target.value)} className="border rounded px-2 py-1">
+          <h1 className="text-4xl font-bold">
+            <span class="text-transparent bg-clip-text bg-gradient-to-r to-[#E4312b] from-[#149954]">Palestine Support</span> Badges
+          </h1>
+
+          {/* Selector de idioma */}
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+              </svg>
+            </div>
+
+            <select
+              value={i18n.language}
+              onChange={e => i18n.changeLanguage(e.target.value)}
+              className="w-full pl-10 pr-12 py-2 text-base font-medium text-gray-800 bg-gray-50 border border-gray-200 rounded-xl appearance-none focus:outline-none focus:ring-1 focus:border-black transition-all duration-200 hover:bg-gray-100 cursor-pointer">
               <option value="en">English</option>
               <option value="es">Español</option>
             </select>
+
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
+              <svg className="fill-current h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+              </svg>
+            </div>
           </div>
         </header>
 
