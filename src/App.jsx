@@ -15,8 +15,6 @@ export default function App() {
   const [label, setLabel] = useStickyState('build', 'badge_label')
   const [message, setMessage] = useStickyState('passing', 'badge_message')
   const [color, setColor] = useStickyState('4c1', 'badge_color')
-  const [logoType, setLogoType] = useStickyState('preset', 'badge_logo_type')
-  const [logoValue, setLogoValue] = useStickyState('', 'badge_logo_value')
   const [selectedLogoId, setSelectedLogoId] = useStickyState('', 'badge_selected_logo_id')
   const [history, setHistory] = useStickyState([], 'badge_history')
 
@@ -73,8 +71,7 @@ export default function App() {
       label,
       message,
       color,
-      logoType,
-      logoValue,
+      selectedLogoId,
       url: badgeUrl
     }
     setHistory(prev => [entry, ...prev].slice(0, 50))
@@ -85,8 +82,7 @@ export default function App() {
     setLabel(entry.label)
     setMessage(entry.message)
     setColor(entry.color)
-    setLogoType(entry.logoType)
-    setLogoValue(entry.logoValue)
+    setSelectedLogoId(entry.selectedLogoId || '')
   }
 
   function handleClearHistory() {
@@ -104,17 +100,13 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6 absolute inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808014_1px,transparent_1px),linear-gradient(to_bottom,#80808014_1px,transparent_1px)] bg-[size:14px_24px]">
+    <div className="min-h-screen bg-gray-50 p-6 inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808014_1px,transparent_1px),linear-gradient(to_bottom,#80808014_1px,transparent_1px)] bg-[size:14px_24px]">
       <div className="max-w-6xl mx-auto bg-white p-6 rounded shadow">
-        <header className="flex items-center justify-between mb-4">
-          <h1 className="text-2xl font-bold">{t('Palestine Support Badges')}</h1>
+        <header className="flex items-center justify-between mb-12">
+          <h1 className="text-4xl font-bold"><span class="text-transparent bg-clip-text bg-gradient-to-r to-[#E4312b] from-[#149954]">Palestine Support</span> Badges</h1>
           <div className="flex items-center gap-3">
             <label className="text-sm">{t('Language')}:</label>
-            <select
-              value={i18n.language}
-              onChange={e => i18n.changeLanguage(e.target.value)}
-              className="border rounded px-2 py-1"
-            >
+            <select value={i18n.language} onChange={e => i18n.changeLanguage(e.target.value)} className="border rounded px-2 py-1">
               <option value="en">English</option>
               <option value="es">Español</option>
             </select>
@@ -124,15 +116,15 @@ export default function App() {
         <main className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Form */}
           <section className="col-span-2 space-y-4">
-            <div className="grid grid-cols-2 gap-2">
-              <label className="flex flex-col">
+            <div className="grid grid-cols-2 gap-4">
+              <label className="flex flex-col gap-2">
                 <span className="text-sm font-medium">{t('Label')}</span>
-                <input className="border rounded p-2" value={label} onChange={e => setLabel(e.target.value)} />
+                <input className="border border-gray-300 rounded p-2" value={label} onChange={e => setLabel(e.target.value)} />
               </label>
 
-              <label className="flex flex-col">
+              <label className="flex flex-col gap-2">
                 <span className="text-sm font-medium">{t('Message')}</span>
-                <input className="border rounded p-2" value={message} onChange={e => setMessage(e.target.value)} />
+                <input className="border border-gray-300 rounded p-2" value={message} onChange={e => setMessage(e.target.value)} />
               </label>
             </div>
 
@@ -141,7 +133,7 @@ export default function App() {
                 <label className="text-sm font-medium">{t('Color')}</label>
                 <div className="flex items-center gap-2 mt-1">
                   <input type="color" value={color.startsWith('#') ? color : `#${color}`} onChange={e => setColor(e.target.value)} />
-                  <input className="border rounded p-2" value={color} onChange={e => setColor(e.target.value)} />
+                  <input className="border border-gray-300 rounded h-10 p-2" value={color} onChange={e => setColor(e.target.value)} />
                 </div>
               </div>
 
@@ -150,7 +142,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 mb-4">
               <button className="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(badgeUrl)}>{t('Copy URL')}</button>
               <button className="px-3 py-2 bg-green-600 text-white rounded hover:bg-green-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(`![Badge](${badgeUrl})`)}>{t('Copy Markdown')}</button>
               <button className="px-3 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(`<img src=\"${badgeUrl}\" alt=\"badge\" />`)}>{t('Copy HTML')}</button>
@@ -189,10 +181,10 @@ export default function App() {
                 <div className="flex flex-col gap-2 max-h-64 overflow-auto">
                   {history.map(entry => (
                     <div key={entry.id} className="flex items-center gap-2 justify-between border p-2 rounded">
-                      <div className="flex items-center gap-2" onClick={() => handleLoadEntry(entry)} style={{ cursor: 'pointer' }}>
-                        <img src={entry.url} alt="mini" className="w-24 h-6" />
+                      <div className="flex flex-wrap items-center gap-2 max-w-[240px]" onClick={() => handleLoadEntry(entry)} style={{ cursor: 'pointer' }}>
+                        <img src={entry.url} alt="mini" className="h-6" />
                         <div className="text-xs">
-                          <div className="font-medium">{entry.label} — {entry.message}</div>
+                          <div className="font-medium">{entry.label} | {entry.message}</div>
                           <div className="text-gray-500">{entry.color}</div>
                         </div>
                       </div>

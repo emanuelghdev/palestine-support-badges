@@ -52,7 +52,7 @@ export default function LogoSelector({ selectedId, onSelect }) {
     <div>
       <div className="text-sm font-medium mb-2">Logo</div>
       
-      <select className="block w-full p-2 border border-black rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" value={selectedId} onChange={(e) => onSelect(e.target.value)}>
+      <select className="block w-full h-10 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:border-black  sm:text-sm" value={selectedId} onChange={(e) => onSelect(e.target.value)}>
         <option value="">No logo</option>
         {PRESET_LOGOS.map(p => (
             <option 
