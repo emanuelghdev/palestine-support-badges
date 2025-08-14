@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStickyState from './hooks/useStickyState'
 import LogoUploader from './components/LogoUploader'
@@ -17,6 +17,8 @@ export default function App() {
   const [color, setColor] = useStickyState('4c1', 'badge_color')
   const [selectedLogoId, setSelectedLogoId] = useStickyState('', 'badge_selected_logo_id')
   const [history, setHistory] = useStickyState([], 'badge_history')
+  const [toast, setToast] = useState(null)
+  const toastTimeoutRef = useRef(null)
 
   // Construir URL del badge según Shields.io
   function buildBadgeUrl() {
@@ -48,21 +50,21 @@ export default function App() {
       a.href = pngDataUrl
       a.download = 'badge.png'
       a.click()
+      setToast({ title: 'Export successful', message: 'PNG downloaded', type: 'Download', isError: false })
     } catch (err) {
-      alert('Failed to export PNG: ' + err.message)
+      setToast({ title: 'Failed to export PNG', message: err?.message ? String(err.message) : 'Unknown error', type: 'Download', isError: true })
     }
-  }
 
-  async function handleDownloadPNG() {
-    try {
-      const pngDataUrl = await svgUrlToPngDataUrl(badgeUrl)
-      const a = document.createElement('a')
-      a.href = pngDataUrl
-      a.download = 'badge.png'
-      a.click()
-    } catch (err) {
-      alert('Failed to export PNG: ' + err.message)
+    // Limpiar timeout anterior si existe
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current)
     }
+
+    // Autoocultar la alerta
+    toastTimeoutRef.current = setTimeout(() => {
+      setToast(null)
+      toastTimeoutRef.current = null
+    }, 3000)
   }
 
   function handleSaveHistory() {
@@ -75,7 +77,7 @@ export default function App() {
       url: badgeUrl
     }
     setHistory(prev => [entry, ...prev].slice(0, 50))
-    alert('Saved to history')
+    handleCopy(entry.url, 'History URL')
   }
 
   function handleLoadEntry(entry) {
@@ -90,17 +92,55 @@ export default function App() {
     setHistory([])
   }
 
-  async function handleCopy(text) {
+  async function handleCopy(text, type = 'Item') {
     try {
       await navigator.clipboard.writeText(text)
-      alert('Copied!')
+      setToast({ title: 'Copied!', message: type + ' copied to clipboard', type, isError: false })
     } catch (e) {
-      alert('Failed to copy')
+      setToast({ title: 'Failed to copy', message: 'Could not copy ' + type + ' to clipboard', type, isError: true })
     }
+
+    // Limpiar timeout anterior si existe
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current)
+    }
+
+    // Autoocultar la alerta
+    toastTimeoutRef.current = setTimeout(() => {
+      setToast(null)
+      toastTimeoutRef.current = null
+    }, 3000)
   }
 
   return (
     <div className="min-h-screen bg-gray-50 p-6 inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808014_1px,transparent_1px),linear-gradient(to_bottom,#80808014_1px,transparent_1px)] bg-[size:14px_24px]">
+      {toast && (
+        <div className="fixed bottom-10 right-10 z-50">
+            {/* Variar colores del alert según toast.type */}
+            <div role="alert" className={"toast-pop flex" +
+              (
+                toast.type === 'URL'
+                ? "flex items-center p-4 mb-4 text-sm text-sky-800 border border-sky-300 rounded-lg bg-sky-50 dark:bg-gray-800 dark:text-sky-400"
+                : toast.type === 'Markdown'
+                ? "flex items-center p-4 mb-4 text-sm text-rose-800 border border-rose-300 rounded-lg bg-rose-50 dark:bg-gray-800 dark:text-rose-400"
+                : toast.type === 'HTML'
+                ? "flex items-center p-4 mb-4 text-sm text-emerald-800 border border-emerald-300 rounded-lg bg-emerald-50 dark:bg-gray-800 dark:text-emerald-400"
+                : toast.type === 'History URL'
+                ? "flex items-center p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
+                : toast.type === 'Download'
+                ? "flex items-center p-4 mb-4 text-sm text-indigo-800 border border-indigo-300 rounded-lg bg-indigo-50 dark:bg-gray-800 dark:text-indigo-300"
+                : // fallback
+                  (toast.isError ? "flex items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-600" : "flex items-center p-4 mb-4 text-sm text-white rounded-lg bg-gray-600")
+              )}>
+              <svg className="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+              </svg>
+              <span className="font-medium mr-2">{toast.title}</span>
+              <span>{toast.message}</span>
+            </div>
+        </div>
+      )}
+
       <div className="max-w-6xl mx-auto bg-white p-6 rounded shadow">
         <header className="flex items-center justify-between mb-12">
           <h1 className="text-4xl font-bold">
@@ -161,19 +201,19 @@ export default function App() {
             </div>
 
             <div className="flex gap-2 mb-4">
-              <button className="px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(badgeUrl)}>{t('Copy URL')}</button>
-              <button className="px-3 py-2 bg-green-600 text-white rounded hover:bg-green-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(`![Badge](${badgeUrl})`)}>{t('Copy Markdown')}</button>
-              <button className="px-3 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(`<img src=\"${badgeUrl}\" alt=\"badge\" />`)}>{t('Copy HTML')}</button>
+              <button className="px-3 py-2 bg-sky-600 text-white rounded hover:bg-sky-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(badgeUrl, "URL")}>{t('Copy URL')}</button>
+              <button className="px-3 py-2 bg-rose-600 text-white rounded hover:bg-rose-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(`![Badge](${badgeUrl})`, "Markdown")}>{t('Copy Markdown')}</button>
+              <button className="px-3 py-2 bg-emerald-700 text-white rounded hover:bg-emerald-800 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(`<img src=\"${badgeUrl}\" alt=\"badge\" />`, "HTML")}>{t('Copy HTML')}</button>
               <button className="px-3 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={handleDownloadPNG}>{t('Download PNG')}</button>
               <button className="px-3 py-2 border rounded bg-white border-gray-300 text-gray-700 transition-all duration-300 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-900 hover:shadow-sm active:bg-gray-100 active:scale-90 cursor-pointer transform ease-in-out" onClick={handleSaveHistory}>{t('Save to history')}</button>
             </div>
 
             <div className="mt-4">
               <h2 className="font-semibold">URL</h2>
-              <code className="block p-2 bg-gray-100 rounded break-all">{badgeUrl}</code>
+              <code className="block p-2 bg-gray-100 rounded break-all mb-4">{badgeUrl}</code>
 
               <h2 className="font-semibold mt-2">Markdown</h2>
-              <code className="block p-2 bg-gray-100 rounded break-all">{`![Badge](${badgeUrl})`}</code>
+              <code className="block p-2 bg-gray-100 rounded break-all mb-4">{`![Badge](${badgeUrl})`}</code>
 
               <h2 className="font-semibold mt-2">HTML</h2>
               <code className="block p-2 bg-gray-100 rounded break-all">{`<img src="${badgeUrl}" alt="Badge" />`}</code>
@@ -188,9 +228,9 @@ export default function App() {
             </div>
 
             <div className="p-4 border rounded">
-              <div className="flex justify-between items-center mb-2">
+              <div className="flex justify-between items-center mb-4">
                 <h3 className="font-medium">{t('History')}</h3>
-                <button className="text-xs underline" onClick={handleClearHistory}>{t('Clear history')}</button>
+                <button className="text-xs px-2 py-1 border rounded bg-white border-gray-300 text-gray-700 transition-all duration-300 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-900 hover:shadow-sm active:bg-gray-100 active:scale-90 cursor-pointer transform ease-in-out" onClick={handleClearHistory}>{t('Clear history')}</button>
               </div>
 
               {history.length === 0 ? (
@@ -199,7 +239,7 @@ export default function App() {
                 <div className="flex flex-col gap-2 max-h-64 overflow-auto">
                   {history.map(entry => (
                     <div key={entry.id} className="flex items-center gap-2 justify-between border p-2 rounded">
-                      <div className="flex flex-wrap items-center gap-2 max-w-[240px]" onClick={() => handleLoadEntry(entry)} style={{ cursor: 'pointer' }}>
+                      <div className="flex flex-wrap items-center gap-2 max-w-[240px] cursor-pointer hover:scale-105 origin-left" onClick={() => handleLoadEntry(entry)}>
                         <img src={entry.url} alt="mini" className="h-6" />
                         <div className="text-xs">
                           <div className="font-medium">{entry.label} | {entry.message}</div>
@@ -207,7 +247,7 @@ export default function App() {
                         </div>
                       </div>
                       <div className="flex gap-1">
-                        <button className="text-xs px-2 py-1 border rounded" onClick={() => navigator.clipboard.writeText(entry.url)}>Copy</button>
+                        <button className="text-xs px-2 py-1 border rounded cursor-pointer hover:scale-105 origin-right" onClick={() => handleCopy(entry.url, "URL")}>Copy</button>
                       </div>
                     </div>
                   ))}

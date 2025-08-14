@@ -65,7 +65,7 @@ export default function LogoSelector({ selectedId, onSelect }) {
         ))}
       </select>
 
-      <div className="mt-2 muted text-xs">Only palestine support icons are available. For custom logos in your badge go directly to <a href="https://shields.io">Shield.io</a></div>
+      <div className="mt-2 muted text-xs text-gray-400">Only palestine support icons are available. For custom logos in your badge go directly to <a href="https://shields.io" className="text-lime-400 hover:underline">Shield.io</a></div>
     </div>
   )
 }
