@@ -77,7 +77,19 @@ export default function App() {
       url: badgeUrl
     }
     setHistory(prev => [entry, ...prev].slice(0, 50))
-    handleCopy(entry.url, 'History URL')
+
+    setToast({ title: 'Saved!', message: 'Badge stored successfully', type: 'History', isError: false })
+
+    // Limpiar timeout anterior si existe
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current)
+    }
+
+    // Autoocultar la alerta
+    toastTimeoutRef.current = setTimeout(() => {
+      setToast(null)
+      toastTimeoutRef.current = null
+    }, 3000)
   }
 
   function handleLoadEntry(entry) {
@@ -88,8 +100,20 @@ export default function App() {
   }
 
   function handleClearHistory() {
-    if (!confirm('Clear history?')) return
     setHistory([])
+
+    setToast({ title: 'Cleared!', message: 'History deleted successfully', type: 'Clear History', isError: false })
+
+    // Limpiar timeout anterior si existe
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current)
+    }
+
+    // Autoocultar la alerta
+    toastTimeoutRef.current = setTimeout(() => {
+      setToast(null)
+      toastTimeoutRef.current = null
+    }, 3000)
   }
 
   async function handleCopy(text, type = 'Item') {
@@ -117,7 +141,7 @@ export default function App() {
       {toast && (
         <div className="fixed bottom-10 right-10 z-50">
             {/* Variar colores del alert según toast.type */}
-            <div role="alert" className={"toast-pop flex" +
+            <div role="alert" className={"toast-pop flex align-middle" +
               (
                 toast.type === 'URL'
                 ? "flex items-center p-4 mb-4 text-sm text-sky-800 border border-sky-300 rounded-lg bg-sky-50 dark:bg-gray-800 dark:text-sky-400"
@@ -125,10 +149,12 @@ export default function App() {
                 ? "flex items-center p-4 mb-4 text-sm text-rose-800 border border-rose-300 rounded-lg bg-rose-50 dark:bg-gray-800 dark:text-rose-400"
                 : toast.type === 'HTML'
                 ? "flex items-center p-4 mb-4 text-sm text-emerald-800 border border-emerald-300 rounded-lg bg-emerald-50 dark:bg-gray-800 dark:text-emerald-400"
-                : toast.type === 'History URL'
+                : toast.type === 'History'
                 ? "flex items-center p-4 mb-4 text-sm text-yellow-800 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
                 : toast.type === 'Download'
                 ? "flex items-center p-4 mb-4 text-sm text-indigo-800 border border-indigo-300 rounded-lg bg-indigo-50 dark:bg-gray-800 dark:text-indigo-300"
+                : toast.type === 'Clear History'
+                ? "flex items-center p-4 mb-4 text-sm text-gray-800 border border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600"
                 : // fallback
                   (toast.isError ? "flex items-center p-4 mb-4 text-sm text-white rounded-lg bg-red-600" : "flex items-center p-4 mb-4 text-sm text-white rounded-lg bg-gray-600")
               )}>
