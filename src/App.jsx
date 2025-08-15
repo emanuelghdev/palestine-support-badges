@@ -6,6 +6,7 @@ import LogoSelector, { getPresetLogoDataUrl } from './components/LogoSelector'
 import BadgePreview from './components/BadgePreview'
 import { svgUrlToPngDataUrl } from './utils/svgToPng'
 import Banner from "./components/Banner";
+import TooltipIcon from './components/TooltipIcon'
 
 
 export default function App() {
@@ -14,7 +15,7 @@ export default function App() {
   // Estados persistidos con localStorage
   const [label, setLabel] = useStickyState('build', 'badge_label')
   const [message, setMessage] = useStickyState('passing', 'badge_message')
-  const [color, setColor] = useStickyState('4c1', 'badge_color')
+  const [color, setColor] = useStickyState('#4cc71e', 'badge_color')
   const [selectedLogoId, setSelectedLogoId] = useStickyState('', 'badge_selected_logo_id')
   const [history, setHistory] = useStickyState([], 'badge_history')
   const [toast, setToast] = useState(null)
@@ -136,6 +137,33 @@ export default function App() {
     }, 3000)
   }
 
+  const tableInfo = (
+    <div className="overflow-auto">
+      <table className="min-w-[19rem] table-auto text-sm">
+        <thead>
+          <tr className="text-center text-s text-blue-600">
+            <th className="px-2 py-1">URL input</th>
+            <th className="px-2 py-1">Badge output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr className="border-t border-gray-300">
+            <td className="px-2 py-2 border-r border-gray-300">Underscore <code className="font-mono bg-gray-100 px-1 rounded">_</code></td>
+            <td className="px-2 py-2">Space <code className="font-mono bg-gray-100 px-1 rounded">&nbsp;</code></td>
+          </tr>
+          <tr className="border-t border-gray-300">
+            <td className="px-2 py-2 border-r border-gray-300">Double underscore <code className="font-mono bg-gray-100 px-1 rounded">__</code></td>
+            <td className="px-2 py-2">Underscore <code className="font-mono bg-gray-100 px-1 rounded">_</code></td>
+          </tr>
+          <tr className="border-t border-gray-300">
+            <td className="px-2 py-2 border-r border-gray-300">Double dash <code className="font-mono bg-gray-100 px-1 rounded">--</code></td>
+            <td className="px-2 py-2">Dash <code className="font-mono bg-gray-100 px-1 rounded">-</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  )
+
   return (
     <div className="min-h-screen bg-gray-50 p-6 inset-0 -z-10 h-full w-full bg-[linear-gradient(to_right,#80808014_1px,transparent_1px),linear-gradient(to_bottom,#80808014_1px,transparent_1px)] bg-[size:14px_24px]">
       {toast && (
@@ -207,7 +235,10 @@ export default function App() {
               </label>
 
               <label className="flex flex-col gap-2">
-                <span className="text-sm font-medium">{t('Message')}</span>
+                <span className="flex flex-row items-center text-sm font-medium">
+                  {t('Message')}
+                  <TooltipIcon content={tableInfo}/>
+                </span>
                 <input className="border border-gray-300 rounded p-2" value={message} onChange={e => setMessage(e.target.value)} />
               </label>
             </div>
@@ -236,13 +267,13 @@ export default function App() {
 
             <div className="mt-4">
               <h2 className="font-semibold">URL</h2>
-              <code className="block p-2 bg-gray-100 rounded break-all mb-4">{badgeUrl}</code>
+              <code className="block p-2 font-mono bg-gray-100 rounded break-all mb-4">{badgeUrl}</code>
 
               <h2 className="font-semibold mt-2">Markdown</h2>
-              <code className="block p-2 bg-gray-100 rounded break-all mb-4">{`![Badge](${badgeUrl})`}</code>
+              <code className="block p-2 font-mono bg-gray-100 rounded break-all mb-4">{`![Badge](${badgeUrl})`}</code>
 
               <h2 className="font-semibold mt-2">HTML</h2>
-              <code className="block p-2 bg-gray-100 rounded break-all">{`<img src="${badgeUrl}" alt="Badge" />`}</code>
+              <code className="block p-2 font-mono bg-gray-100 rounded break-all">{`<img src="${badgeUrl}" alt="Badge" />`}</code>
             </div>
           </section>
 
