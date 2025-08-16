@@ -68,7 +68,7 @@ export default function LogoSelector({ selectedId = '', onSelect = () => {} }) {
       <button
         type="button"
         onClick={() => setOpen(v => !v)}
-        className="w-full flex items-center justify-between gap-2 h-10 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:border-black sm:text-sm bg-white"
+        className="w-full flex items-center justify-between gap-2 h-10 px-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:border-black sm:text-sm bg-white dark:bg-[#202529]"
         aria-haspopup="listbox"
         aria-expanded={open}
       >
@@ -92,13 +92,13 @@ export default function LogoSelector({ selectedId = '', onSelect = () => {} }) {
         <ul
           role="listbox"
           aria-activedescendant={selected ? selected.id : undefined}
-          className="absolute z-40 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg max-h-56 overflow-auto"
+          className="absolute z-40 mt-1 w-full bg-white border border-gray-200 rounded-md shadow-lg max-h-56 overflow-auto dark:bg-[#202529]"
         >
           <li
             key="none"
             role="option"
             onClick={() => { onSelect(''); setOpen(false) }}
-            className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50 cursor-pointer"
+            className="flex items-center gap-2 px-3 py-2 hover:bg-gray-50 dark:hover:bg-[#1A1A1A] cursor-pointer"
           >
             <span className="text-gray-500">No logo</span>
           </li>
@@ -109,7 +109,7 @@ export default function LogoSelector({ selectedId = '', onSelect = () => {} }) {
               role="option"
               aria-selected={p.id === selectedId}
               onClick={() => { onSelect(p.id); setOpen(false) }}
-              className="flex items-center gap-3 px-3 py-2 hover:bg-gray-50 cursor-pointer"
+              className="flex items-center gap-3 px-3 py-2 hover:bg-gray-50 dark:hover:bg-[#1A1A1A] cursor-pointer"
             >
               <img src={encodeToDataUrl(p.svgText)} alt={p.label} className="w-6 h-6 flex-shrink-0" />
               <span className="truncate">{p.label}</span>
@@ -119,9 +119,9 @@ export default function LogoSelector({ selectedId = '', onSelect = () => {} }) {
         </ul>
       )}
 
-      <div className="mt-2 muted text-xs text-gray-400">
+      <div className="mt-2 muted text-xs text-gray-400 dark:text-gray-600">
         Only palestine support icons are available. For custom logos in your badge go directly to{' '}
-        <a href="https://shields.io" className="text-lime-400 hover:underline">Shield.io</a>
+        <a href="https://shields.io" className="text-lime-400 dark:text-lime-600 hover:underline">Shields.io</a>
       </div>
     </div>
   )

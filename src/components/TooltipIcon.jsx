@@ -31,16 +31,16 @@ export default function TooltipIcon({ tipTitle, content }) {
         onBlur={() => setVisible(false)}
         onClick={() => setVisible(v => !v)} // Útil en pantallas táctiles
       >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 hover:text-blue-500 transition-colors duration-200 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 hover:text-blue-500 transition-colors duration-200 cursor-pointer dark:hover:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       </button>
 
       {/* Tooltip */}
       {visible && (
-        <div id={id} role="tooltip" className="absolute z-10 left-3 w-auto px-2.5 py-1 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg shadow-lg animate-pop">
-          <div className="text-blue-600 font-medium mb-1">{tipTitle}</div>
-          <div className="text-gray-600">{content}</div>
+        <div id={id} role="tooltip" className="absolute z-10 left-3 w-auto px-2.5 py-1 text-sm text-gray-700 bg-white border border-gray-200 rounded-lg shadow-lg animate-pop dark:bg-[#202529] dark:border-gray-600">
+          <div className="text-blue-600 font-medium mb-1 dark:text-blue-400">{tipTitle}</div>
+          <div className="text-gray-600 dark:text-gray-100">{content}</div>
         </div>
       )}
       {/* Popup animation */}
