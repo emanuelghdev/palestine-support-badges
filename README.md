@@ -34,7 +34,7 @@ The website is simple and intuitive: it requires no registration or prior forms,
 
 - Use the color picker or type the color you want (hex, rgb, rgba, hsl, hsla and css named colors supported).
 
-- If you provide a color name (for example, "green") it will usually be accepted as well, since the value is normalized internally. However, not all colors are available this way. To verify which ones are, check the [Shield.io documentation](https://github.com/badges/shields/tree/master/badge-maker#colors)."
+- If you provide a color name (for example, "green") it will usually be accepted as well, since the value is normalized internally. However, not all colors are available this way. To verify which ones are, check the [Shields.io documentation](https://github.com/badges/shields/tree/master/badge-maker#colors).
 
 - In the current implementation, only the color of the message (the right part of the badge) can be changed.
 
@@ -79,7 +79,7 @@ Share and create all kinds of badges. Use the icons you feel most comfortable wi
 
 As I mentioned earlier, the badges in this project use logos embedded in the URL via Base64. This makes the **URL of badges with certain logos very long** and, due to GitHub's proxy system (which has its own URL size limits), these badges may not display correctly in GitHub repositories, although they usually load fine elsewhere since other platforms don’t impose such strict limits.
 
-If you want to use **these badges on GitHub**, it is recommended to shorten the URL using a free service like **[TinyURL](https://tinyurl.com/)**. It’s very simple: just paste the long badge URL into TinyURL and use the shortened URL in your README or documentation.
+If you want to **use these badges on GitHub**, it is recommended to **shorten the URL** using a free service like [TinyURL](https://tinyurl.com/). It’s very simple: just paste the long badge URL into TinyURL and use the shortened URL in your README or documentation.
 
 
 ## 📨 Ready-to-use examples
