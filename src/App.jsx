@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import useStickyState from './hooks/useStickyState'
-import LogoUploader from './components/LogoUploader'
 import LogoSelector, { getPresetLogoDataUrl } from './components/LogoSelector'
 import BadgePreview from './components/BadgePreview'
 import { svgUrlToPngDataUrl } from './utils/svgToPng'
@@ -70,9 +69,9 @@ export default function App() {
       a.href = pngDataUrl
       a.download = 'badge.png'
       a.click()
-      setToast({ title: 'Export successful', message: 'PNG downloaded', type: 'Download', isError: false })
+      setToast({ title: t('Export successful'), message: t('PNG downloaded'), type: 'Download', isError: false })
     } catch (err) {
-      setToast({ title: 'Failed to export PNG', message: err?.message ? String(err.message) : 'Unknown error', type: 'Download', isError: true })
+      setToast({ title: t('Failed to export PNG'), message: err?.message ? String(err.message) : t('Unknown error'), type: 'Download', isError: true })
     }
 
     // Limpiar timeout anterior si existe
@@ -99,7 +98,7 @@ export default function App() {
     }
     setHistory(prev => [entry, ...prev].slice(0, 50))
 
-    setToast({ title: 'Saved!', message: 'Badge stored successfully', type: 'History', isError: false })
+    setToast({ title: t('Saved!'), message: t('Badge stored successfully'), type: 'History', isError: false })
 
     // Limpiar timeout anterior si existe
     if (toastTimeoutRef.current) {
@@ -124,7 +123,7 @@ export default function App() {
   // Manejamos limpiar el historial
   function handleClearHistory() {
     setHistory([])
-    setToast({ title: 'Cleared!', message: 'History deleted successfully', type: 'Clear History', isError: false })
+    setToast({ title: t('Cleared!'), message: t('History deleted successfully'), type: 'Clear History', isError: false })
 
     // Limpiar timeout anterior si existe
     if (toastTimeoutRef.current) {
@@ -142,9 +141,9 @@ export default function App() {
   async function handleCopy(text, type = 'Item') {
     try {
       await navigator.clipboard.writeText(text)
-      setToast({ title: 'Copied!', message: type + ' copied to clipboard', type, isError: false })
+      setToast({ title: t('Copied!'), message: type + t(' copied to clipboard'), type, isError: false })
     } catch (e) {
-      setToast({ title: 'Failed to copy', message: 'Could not copy ' + type + ' to clipboard', type, isError: true })
+      setToast({ title: t('Failed to copy'), message: t('Could not copy ') + type + t(' to clipboard'), type, isError: true })
     }
 
     // Limpiar timeout anterior si existe
@@ -165,22 +164,22 @@ export default function App() {
       <table className="min-w-[19rem] table-auto text-sm">
         <thead>
           <tr className="text-center text-s text-blue-600 dark:text-blue-400">
-            <th className="px-2 py-1">URL input</th>
-            <th className="px-2 py-1">Badge output</th>
+            <th className="px-2 py-1">{t('URL input')}</th>
+            <th className="px-2 py-1">{t('Badge output')}</th>
           </tr>
         </thead>
         <tbody>
           <tr className="border-t border-gray-300">
-            <td className="px-2 py-2 border-r border-gray-300">Underscore <code className="font-mono bg-gray-100 px-1 rounded dark:bg-[#262b30]">_</code></td>
-            <td className="px-2 py-2">Space <code className="font-mono bg-gray-100 px-1 rounded dark:bg-[#262b30]">&nbsp;</code></td>
+            <td className="px-2 py-2 border-r border-gray-300">{t('Underscore')} <code className="font-mono bg-gray-100 px-1 rounded dark:bg-[#262b30]">_</code></td>
+            <td className="px-2 py-2">{t('Space')} <code className="font-mono bg-gray-100 px-1 rounded dark:bg-[#262b30]">&nbsp;</code></td>
           </tr>
           <tr className="border-t border-gray-300">
-            <td className="px-2 py-2 border-r border-gray-300">Double underscore <code className="font-mono bg-gray-100 px-1 rounded dark:bg-[#262b30]">__</code></td>
-            <td className="px-2 py-2">Underscore <code className="font-mono bg-gray-100 px-1 rounded dark:bg-[#262b30]">_</code></td>
+            <td className="px-2 py-2 border-r border-gray-300">{t('Double underscore')} <code className="font-mono bg-gray-100 px-1 rounded dark:bg-[#262b30]">__</code></td>
+            <td className="px-2 py-2">{t('Underscore')} <code className="font-mono bg-gray-100 px-1 rounded dark:bg-[#262b30]">_</code></td>
           </tr>
           <tr className="border-t border-gray-300">
-            <td className="px-2 py-2 border-r border-gray-300">Double dash <code className="font-mono bg-gray-100 px-1 rounded dark:bg-[#262b30]">--</code></td>
-            <td className="px-2 py-2">Dash <code className="font-mono bg-gray-100 px-1 rounded dark:bg-[#262b30]">-</code></td>
+            <td className="px-2 py-2 border-r border-gray-300">{t('Double dash')} <code className="font-mono bg-gray-100 px-1 rounded dark:bg-[#262b30]">--</code></td>
+            <td className="px-2 py-2">{t('Dash')} <code className="font-mono bg-gray-100 px-1 rounded dark:bg-[#262b30]">-</code></td>
           </tr>
         </tbody>
       </table>
@@ -358,7 +357,7 @@ export default function App() {
                         </div>
                       </div>
                       <div className="flex gap-1">
-                        <button className="text-xs px-2 py-1 border rounded cursor-pointer hover:scale-105 origin-right" onClick={() => handleCopy(entry.url, "URL")}>Copy</button>
+                        <button className="text-xs px-2 py-1 border rounded cursor-pointer hover:scale-105 origin-right" onClick={() => handleCopy(entry.url, "URL")}>{t('Copy')}</button>
                       </div>
                     </div>
                   ))}
@@ -368,7 +367,7 @@ export default function App() {
           </aside>
         </main>
       </div>
-      <Banner />
+      <Banner isDarkMode = {isDarkMode}/>
     </div>
   )
 }

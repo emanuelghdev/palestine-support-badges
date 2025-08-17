@@ -1,5 +1,6 @@
 // src/components/LogoSelector.jsx
 import React, { useState, useRef, useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 
 // Importar raw svg
 import logo1Raw from '../assets/logos/logo1.svg?raw'
@@ -49,6 +50,7 @@ const PRESET_LOGOS = [
 export default function LogoSelector({ selectedId = '', onSelect = () => {} }) {
   const [open, setOpen] = useState(false)
   const containerRef = useRef(null)
+  const { t, i18n } = useTranslation()
 
   useEffect(() => {
     function onDocClick(e) {
@@ -75,8 +77,8 @@ export default function LogoSelector({ selectedId = '', onSelect = () => {} }) {
         <div className="flex items-center gap-2 truncate">
           {selected ? (
             <>
-              <img src={encodeToDataUrl(selected.svgText)} alt={selected.label} className="w-5 h-5 flex-shrink-0" />
-              <span className="truncate">{selected.label}</span>
+              <img src={encodeToDataUrl(selected.svgText)} alt={t(selected.label)} className="w-5 h-5 flex-shrink-0" />
+              <span className="truncate">{t(selected.label)}</span>
             </>
           ) : (
             <span className="text-gray-500">No logo</span>
@@ -111,17 +113,16 @@ export default function LogoSelector({ selectedId = '', onSelect = () => {} }) {
               onClick={() => { onSelect(p.id); setOpen(false) }}
               className="flex items-center gap-3 px-3 py-2 hover:bg-gray-50 dark:hover:bg-[#1A1A1A] cursor-pointer"
             >
-              <img src={encodeToDataUrl(p.svgText)} alt={p.label} className="w-6 h-6 flex-shrink-0" />
-              <span className="truncate">{p.label}</span>
-              {p.id === selectedId && <span className="ml-auto text-xs text-gray-400">Selected</span>}
+              <img src={encodeToDataUrl(p.svgText)} alt={t(p.label)} className="w-6 h-6 flex-shrink-0" />
+              <span className="truncate">{t(p.label)}</span>
+              {p.id === selectedId && <span className="ml-auto text-xs text-gray-400">{t('Selected')}</span>}
             </li>
           ))}
         </ul>
       )}
 
       <div className="mt-2 muted text-xs text-gray-400 dark:text-gray-600">
-        Only palestine support icons are available. For custom logos in your badge go directly to{' '}
-        <a href="https://shields.io" className="text-lime-400 dark:text-lime-600 hover:underline">Shields.io</a>
+        {t('Only palestine support icons are available. For custom logos in your badge go directly to')} <a href="https://shields.io" className="text-lime-400 dark:text-lime-600 hover:underline">Shields.io</a>
       </div>
     </div>
   )

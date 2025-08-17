@@ -1,11 +1,12 @@
-// Este archivo ha sido copiado íntegramente del repositorio:
+// Este archivo ha sido copiado del repositorio:
 // https://github.com/Safouene1/support-palestine-banner/blob/master/React-Components/react.jsx
 import { useState } from "react";
+import { useTranslation } from 'react-i18next'
 
-export default function Banner() {
-  const isDarkMode = false;
+export default function Banner({ isDarkMode = false }) {
+  const { t, i18n } = useTranslation()
   const title = "Free Palestine 🍉";
-  const description = `Stand for humanity! Speak out against the atrocities committed by the genocidal state of Israel. Don't let them be forgotten. If you can, please donate now to help.`;
+  const description = t(`Stand for humanity! Speak out against the atrocities committed by the genocidal state of Israel. Don't let them be forgotten. If you can, please donate now to help.`);
   const linkTo = "https://donate.unrwa.org/-landing-page/en_EN";
 
   const flag = {
