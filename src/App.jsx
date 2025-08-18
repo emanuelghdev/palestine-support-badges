@@ -12,13 +12,14 @@ export default function App() {
   const { t, i18n } = useTranslation()
 
   // Estados persistidos con localStorage
-  const [label, setLabel] = useStickyState('build', 'badge_label')
-  const [message, setMessage] = useStickyState('passing', 'badge_message')
+  const [label, setLabel] = useStickyState('Free', 'badge_label')
+  const [message, setMessage] = useStickyState('Palestine', 'badge_message')
   const [color, setColor] = useStickyState('#4cc71e', 'badge_color')
   const [selectedLogoId, setSelectedLogoId] = useStickyState('', 'badge_selected_logo_id')
   const [history, setHistory] = useStickyState([], 'badge_history')
   const [toast, setToast] = useState(null)
   const toastTimeoutRef = useRef(null)
+  const currentLang = (i18n.resolvedLanguage || i18n.language || localStorage.getItem('i18nextLng') || 'en').split('-')[0];
 
   // Inicializamos desde localStorage o desde la preferencia del sistema si no hay valor guardado
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -262,7 +263,7 @@ export default function App() {
               </div>
 
               <select
-                value={i18n.language}
+                value={currentLang}
                 onChange={e => i18n.changeLanguage(e.target.value)}
                 className="w-full pl-10 pr-12 py-2 text-base font-medium text-gray-800 bg-gray-50 border border-gray-200 rounded-full appearance-none focus:outline-none focus:ring-1 focus:border-black transition-all duration-200 hover:bg-gray-100 cursor-pointer dark:bg-[#262626] dark:border-[#333333] dark:text-white hover:dark:bg-[#222222]">
                 <option value="en">English</option>
