@@ -169,7 +169,74 @@ https://tinyurl.com/5nvypynu
 ```
 
 
+## 🍉 Alternative awesome badge projects
+
+If you’re looking for **another type of ready-made badge** or banner, there are many developers who have created awesome pro-Palestine badges that you can check out.
+
+### [support-palestine-banner](https://github.com/Safouene1/support-palestine-banner) by [@Safouene1](https://github.com/Safouene1)
+
+
+[![StandWithPalestine](https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg)](https://techforpalestine.org/learn-more)
+
+```
+[![StandWithPalestine](https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/StandWithPalestine.svg)](https://techforpalestine.org/learn-more)
+```
+
+[![ReadMeSupportPalestine](https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/banner-support.svg)](https://github.com/Safouene1/support-palestine-banner)
+
+```
+[![ReadMeSupportPalestine](https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/banner-support.svg)](https://techforpalestine.org/learn-more)
+```
+
+---
+
+### [StandWithPalestine](https://github.com/saedyousef/StandWithPalestine) by [@saedyousef](https://github.com/saedyousef)
+
+[![StandWithPalestineBadge](https://raw.githubusercontent.com/saedyousef/StandWithPalestine/main/badges/flat/IStandWithPalestine.svg)](https://github.com/saedyousef/StandWithPalestine)
+
+```
+[![StandWithPalestineBadge](https://raw.githubusercontent.com/saedyousef/StandWithPalestine/main/badges/flat/IStandWithPalestine.svg)](https://github.com/saedyousef/StandWithPalestine)
+```
+
+[![StandWithPalestineBadgeLight](https://raw.githubusercontent.com/saedyousef/StandWithPalestine/main/badges/flat/WeStandWithPalestine_light.svg)](https://github.com/saedyousef/StandWithPalestine)
+
+```
+[![StandWithPalestineBadgeLight](https://raw.githubusercontent.com/saedyousef/StandWithPalestine/main/badges/flat/WeStandWithPalestine_light.svg)](https://github.com/saedyousef/StandWithPalestine)
+```
+
+[![StandWithPalestineBadgeBordered](https://raw.githubusercontent.com/saedyousef/StandWithPalestine/main/badges/flat/bordered/StandWithPalestine.svg)](https://github.com/saedyousef/StandWithPalestine)
+
+```
+[![StandWithPalestineBadgeBordered](https://raw.githubusercontent.com/saedyousef/StandWithPalestine/main/badges/flat/bordered/StandWithPalestine.svg)](https://github.com/saedyousef/StandWithPalestine)
+```
+
+---
+
+### [Stand with Palestine](https://github.com/zeyadetman/stand-with-palestine) by [@zeyadetman](https://github.com/zeyadetman) & [@elharony](https://github.com/elharony)
+
+![PalestineStatsFooter](https://private-user-images.githubusercontent.com/16986422/282255723-dd2369a1-eeda-4e35-a624-690e990e9b61.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTU1NjQ1NTMsIm5iZiI6MTc1NTU2NDI1MywicGF0aCI6Ii8xNjk4NjQyMi8yODIyNTU3MjMtZGQyMzY5YTEtZWVkYS00ZTM1LWE2MjQtNjkwZTk5MGU5YjYxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODE5VDAwNDQxM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZiZTdiY2IyYjc3NTIwYjkzOThlMzUzZDFmZGVlZjI0OWI0Mjg5ZTU4NWZlZDdlYTAwMDFlZTQ5NTAxMDA4MDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.K6l4Q0VYmw5HQKYtcla8HwT4h-9cJmHTQdF_SdWojeY)
+
+```
+![PalestineStatsFooter](https://private-user-images.githubusercontent.com/16986422/282255723-dd2369a1-eeda-4e35-a624-690e990e9b61.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTU1NjQ1NTMsIm5iZiI6MTc1NTU2NDI1MywicGF0aCI6Ii8xNjk4NjQyMi8yODIyNTU3MjMtZGQyMzY5YTEtZWVkYS00ZTM1LWE2MjQtNjkwZTk5MGU5YjYxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODE5VDAwNDQxM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZiZTdiY2IyYjc3NTIwYjkzOThlMzUzZDFmZGVlZjI0OWI0Mjg5ZTU4NWZlZDdlYTAwMDFlZTQ5NTAxMDA4MDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.K6l4Q0VYmw5HQKYtcla8HwT4h-9cJmHTQdF_SdWojeY)
+```
+
+---
+
+### [hinds-banner](https://github.com/alvii147/hinds-banner) by [@alvii147](https://github.com/alvii147)
+
+[![Free Palestine](https://hinds-banner.vercel.app/free-palestine?variant=classic)](https://www.pcrf.net)
+
+```
+[![Free Palestine](https://hinds-banner.vercel.app/free-palestine?variant=classic)](https://www.pcrf.net)
+```
+
+[![Genocide Watch](https://hinds-banner.vercel.app/genocide-watch?variant=classic)](https://www.pcrf.net)
+
+```
+[![Genocide Watch](https://hinds-banner.vercel.app/genocide-watch?variant=classic)](https://www.pcrf.net)
+```
+
+
 ## 📄 License
 
 This project is licensed under the [MIT License](LICENSE). Feel free to use and modify it as you like and contributions are more than welcome!
-
