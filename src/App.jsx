@@ -220,14 +220,14 @@ export default function App() {
       )}
 
       <div className="max-w-6xl mx-auto bg-white p-6 rounded shadow dark:bg-[#202529]">
-        <header className="flex items-center justify-between mb-12">
-          <h1 className="text-4xl font-bold">
+        <header className="flex flex-col mb-4 md:flex-row items-start md:items-center justify-between md:mb-12 gap-4 md:gap-0">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
             <span className="text-transparent bg-clip-text bg-gradient-to-r to-[#E4312b] from-[#149954]">Palestine Support</span> Badges
           </h1>
 
-          <div className="flex justify-between gap-6">
+          <div className="flex w-full md:w-auto items-center justify-between md:justify-end gap-6">
             {/* Toggle de modo oscuro */}
-            <div className="flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-2">
               <button 
                 onClick={() => setIsDarkMode(!isDarkMode)}
                 className={`relative rounded-full w-14 h-8 flex items-center justify-center border transition-colors duration-300 ease-in-out focus:outline-none cursor-pointer ${
@@ -255,7 +255,7 @@ export default function App() {
             </div>
 
             {/* Selector de idioma */}
-            <div className="relative">
+            <div className="relative hidden md:block">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500 dark:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
@@ -279,10 +279,10 @@ export default function App() {
           </div>
         </header>
 
-        <main className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <main className="flex flex-col-reverse md:grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Form */}
           <section className="col-span-2 space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid md:grid-cols-2 gap-4">
               <label className="flex flex-col gap-2">
                 <span className="text-sm font-medium">{t('Label')}</span>
                 <input className="border border-gray-300 rounded p-2" value={label} onChange={e => setLabel(e.target.value)} />
@@ -297,12 +297,12 @@ export default function App() {
               </label>
             </div>
 
-            <div className="flex flex-row content-start items-start gap-4 mb-8">
-              <div>
+            <div className="flex flex-col md:flex-row content-start items-start gap-4 mb-8">
+              <div className="w-full md:w-auto">
                 <label className="text-sm font-medium">{t('Color')}</label>
                 <div className="flex items-center gap-2 mt-1">
                   <input type="color" value={color.startsWith('#') ? color : `#${color}`} onChange={e => setColor(e.target.value)} />
-                  <input className="border border-gray-300 rounded h-10 p-2" value={color} onChange={e => setColor(e.target.value)} />
+                  <input className="w-[90%] md:w-auto border border-gray-300 rounded h-10 p-2" value={color} onChange={e => setColor(e.target.value)} />
                 </div>
               </div>
 
@@ -311,15 +311,15 @@ export default function App() {
               </div>
             </div>
 
-            <div className="flex gap-2 mb-4">
-              <button className="px-3 py-2 bg-sky-600 text-white rounded hover:bg-sky-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(badgeUrl, "URL")}>{t('Copy URL')}</button>
-              <button className="px-3 py-2 bg-rose-600 text-white rounded hover:bg-rose-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(`![Badge](${badgeUrl})`, "Markdown")}>{t('Copy Markdown')}</button>
-              <button className="px-3 py-2 bg-emerald-700 text-white rounded hover:bg-emerald-800 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(`<img src=\"${badgeUrl}\" alt=\"badge\" />`, "HTML")}>{t('Copy HTML')}</button>
-              <button className="px-3 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={handleDownloadPNG}>{t('Download PNG')}</button>
-              <button className="px-3 py-2 border rounded bg-white border-gray-300 text-gray-700 transition-all duration-300 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-900 hover:shadow-sm active:bg-gray-100 active:scale-90 cursor-pointer transform ease-in-out dark:bg-[#202529] dark:border-[#3a3f44] dark:text-gray-200 dark:hover:bg-[#2a2f33] dark:hover:border-[#4a4f55] dark:hover:text-gray-100" onClick={handleSaveHistory}>{t('Save to history')}</button>
+            <div className="flex gap-2 mb-4 flex-wrap">
+              <button className="w-full sm:w-auto px-3 py-2 bg-sky-600 text-white rounded hover:bg-sky-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(badgeUrl, "URL")}>{t('Copy URL')}</button>
+              <button className="w-full sm:w-auto px-3 py-2 bg-rose-600 text-white rounded hover:bg-rose-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(`![Badge](${badgeUrl})`, "Markdown")}>{t('Copy Markdown')}</button>
+              <button className="w-full sm:w-auto px-3 py-2 bg-emerald-700 text-white rounded hover:bg-emerald-800 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(`<img src=\"${badgeUrl}\" alt=\"badge\" />`, "HTML")}>{t('Copy HTML')}</button>
+              <button className="w-full sm:w-auto px-3 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={handleDownloadPNG}>{t('Download PNG')}</button>
+              <button className="w-full sm:w-auto px-3 py-2 border rounded bg-white border-gray-300 text-gray-700 transition-all duration-300 hover:bg-gray-50 hover:border-gray-400 hover:text-gray-900 hover:shadow-sm active:bg-gray-100 active:scale-90 cursor-pointer transform ease-in-out dark:bg-[#202529] dark:border-[#3a3f44] dark:text-gray-200 dark:hover:bg-[#2a2f33] dark:hover:border-[#4a4f55] dark:hover:text-gray-100" onClick={handleSaveHistory}>{t('Save to history')}</button>
             </div>
 
-            <div className="mt-4">
+            <div className="hidden md:block mt-4">
               <h2 className="font-semibold mb-0.5">URL</h2>
               <code className="block p-2 font-mono bg-gray-100 rounded break-all mb-4 dark:bg-[#262b30]">{badgeUrl}</code>
 
