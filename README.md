@@ -212,12 +212,12 @@ If you’re looking for **another type of ready-made badge** or banner, there ar
 
 ---
 
-### [Stand with Palestine](https://github.com/zeyadetman/stand-with-palestine) by [@zeyadetman](https://github.com/zeyadetman) & [@elharony](https://github.com/elharony)
+### [Stand-with-Palestine](https://github.com/zeyadetman/stand-with-palestine) by [@zeyadetman](https://github.com/zeyadetman) & [@elharony](https://github.com/elharony)
 
-![PalestineStatsFooter](https://private-user-images.githubusercontent.com/16986422/282255723-dd2369a1-eeda-4e35-a624-690e990e9b61.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTU1NjQ1NTMsIm5iZiI6MTc1NTU2NDI1MywicGF0aCI6Ii8xNjk4NjQyMi8yODIyNTU3MjMtZGQyMzY5YTEtZWVkYS00ZTM1LWE2MjQtNjkwZTk5MGU5YjYxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODE5VDAwNDQxM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZiZTdiY2IyYjc3NTIwYjkzOThlMzUzZDFmZGVlZjI0OWI0Mjg5ZTU4NWZlZDdlYTAwMDFlZTQ5NTAxMDA4MDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.K6l4Q0VYmw5HQKYtcla8HwT4h-9cJmHTQdF_SdWojeY)
+<img src="src/assets/examples/Bannerjs.png" width="100%" alt="Live demo of the Stand with Palestine banner"/>
 
 ```
-![PalestineStatsFooter](https://private-user-images.githubusercontent.com/16986422/282255723-dd2369a1-eeda-4e35-a624-690e990e9b61.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTU1NjQ1NTMsIm5iZiI6MTc1NTU2NDI1MywicGF0aCI6Ii8xNjk4NjQyMi8yODIyNTU3MjMtZGQyMzY5YTEtZWVkYS00ZTM1LWE2MjQtNjkwZTk5MGU5YjYxLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA4MTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwODE5VDAwNDQxM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTZiZTdiY2IyYjc3NTIwYjkzOThlMzUzZDFmZGVlZjI0OWI0Mjg5ZTU4NWZlZDdlYTAwMDFlZTQ5NTAxMDA4MDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.K6l4Q0VYmw5HQKYtcla8HwT4h-9cJmHTQdF_SdWojeY)
+<script src="https://stand-with-palestine.pages.dev/widget.js"></script>
 ```
 
 ---
