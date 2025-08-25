@@ -47,7 +47,8 @@ The website is simple and intuitive: it requires no registration or prior forms,
 
 - These icons aim to represent the most important symbols of both the Palestinian people's struggle and their cultural and historical heritage.
 
-**Please note:** I am not Palestinian, so I cannot fully understand the true importance and meanings of certain representations. For that reason, I would appreciate any corrections and any contributions of new symbols or images that better represent the Palestinian history.
+> [!NOTE]  
+> I am not Palestinian, so I cannot fully understand the true importance and meanings of certain representations. For that reason, I would appreciate any corrections and any contributions of new symbols or images that better represent the Palestinian history.
 
 
 **4. Copy or download PNG**
@@ -75,11 +76,10 @@ The website is simple and intuitive: it requires no registration or prior forms,
 Share and create all kinds of badges. Use the icons you feel most comfortable with, choose the colors that match your website and include these images **everywhere you can**: social media, personal webs, open-source projects and more. **Don’t be silent**. Fighting from a distance and against the inaction and complicity of our governments is not easy, but Israel lives through its image, so **expose what is happening** and don’t normalize it. Attend protests, be explicit about your stance and support the community in any way you can. None of this is enough, but it’s about **doing everything within our power**. We are talking about humanity.
 
 
-## ‼️ Important (For GitHub use)
+> [!CAUTION] For GitHub use
+> As I mentioned earlier, the badges in this project use logos embedded in the URL via Base64. This makes the **URL of badges with certain logos very long** and, due to GitHub's proxy system (which has its own URL size limits), these badges may not display correctly in GitHub repositories, although they usually load fine elsewhere since other platforms don’t impose such strict limits.
+> If you want to **use these badges on GitHub**, it is recommended to **shorten the URL** using a free service like [TinyURL](https://tinyurl.com/). It’s very simple: just paste the long badge URL into TinyURL and use the shortened URL in your README or documentation.
 
-As I mentioned earlier, the badges in this project use logos embedded in the URL via Base64. This makes the **URL of badges with certain logos very long** and, due to GitHub's proxy system (which has its own URL size limits), these badges may not display correctly in GitHub repositories, although they usually load fine elsewhere since other platforms don’t impose such strict limits.
-
-If you want to **use these badges on GitHub**, it is recommended to **shorten the URL** using a free service like [TinyURL](https://tinyurl.com/). It’s very simple: just paste the long badge URL into TinyURL and use the shortened URL in your README or documentation.
 
 
 ## 📨 Ready-to-use examples
