@@ -8,8 +8,8 @@ The website is simple and intuitive: it requires no registration or prior forms,
 
 
 <div align="center">
-    <img src="src/assets/examples/Example1.png" width="100%" alt="Example image of the app in light mode generating a badge that says 'FreePalestine' and features the Palestinian flag as its icon"/>
-    <img src="src/assets/examples/Example2.png" width="100%" alt="Example image of the app in dark mode generating a badge that says '#CeasefireNow' and features an olive branch as its icon"/>
+    <img src="doc/examples/Example1.png" width="100%" alt="Example image of the app in light mode generating a badge that says 'FreePalestine' and features the Palestinian flag as its icon"/>
+    <img src="doc/examples/Example2.png" width="100%" alt="Example image of the app in dark mode generating a badge that says '#CeasefireNow' and features an olive branch as its icon"/>
 </div>
 
 
@@ -214,7 +214,7 @@ If you’re looking for **another type of ready-made badge** or banner, there ar
 
 ### [Stand-with-Palestine](https://github.com/zeyadetman/stand-with-palestine) by [@zeyadetman](https://github.com/zeyadetman) & [@elharony](https://github.com/elharony)
 
-<img src="src/assets/examples/Bannerjs.png" width="100%" alt="Live demo of the Stand with Palestine banner"/>
+<img src="doc/examples/Bannerjs.png" width="100%" alt="Live demo of the Stand with Palestine banner"/>
 
 ```
 <script src="https://stand-with-palestine.pages.dev/widget.js"></script>
