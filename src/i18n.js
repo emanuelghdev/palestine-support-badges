@@ -61,8 +61,9 @@ const resources = {
       "Stand for humanity! Speak out against the atrocities committed by the genocidal state of Israel. Don't let them be forgotten. If you can, please donate now to help.":"Stand for humanity! Speak out against the atrocities committed by the genocidal state of Israel. Don't let them be forgotten. If you can, please donate now to help.",
       "Toggle dark mode":"Toggle dark mode",
       "Language selector":"Language selector",
-      "Go to Tech For Palestine":"Go to Tech For Palestine",
-      "Go to the GitHub project":"Go to the GitHub project"
+      "Go to the GitHub project":"Go to the GitHub project",
+      "Go to the Discord":"Go to the Discord",
+      "Go to Tech For Palestine":"Go to Tech For Palestine"
     }
   },
   es: {
@@ -123,8 +124,9 @@ const resources = {
       "Stand for humanity! Speak out against the atrocities committed by the genocidal state of Israel. Don't let them be forgotten. If you can, please donate now to help.":"¡Defiende la humanidad! Alza la voz contra las atrocidades cometidas por el Estado genocida de Israel. No permitas que sean olvidadas. Si puedes, por favor dona ahora para ayudar.",
       "Toggle dark mode":"Activar/desactivar modo oscuro",
       "Language selector":"Selector de idioma",
-      "Go to Tech For Palestine":"Ir a Tech For Palestine",
-      "Go to the GitHub project":"Ir al proyecto de GitHub"
+      "Go to the GitHub project":"Ir al proyecto de GitHub",
+      "Go to the Discord":"Ir al Discord",
+      "Go to Tech For Palestine":"Ir a Tech For Palestine"
     }
   }
 }
