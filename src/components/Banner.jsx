@@ -66,7 +66,7 @@ export default function Banner({ isDarkMode = false }) {
         type="button"
         className="flex1 -m-3 flex justify-end p-3 focus-visible:outline-offset-[-2px]"
       >
-        <CrossSvg className="h-5 w-5 text-gray-900" aria-hidden="true" />
+        <CrossSvg className="h-5 w-5 text-gray-900 cursor-pointer" aria-hidden="true" />
       </button>
     </div>
   );
