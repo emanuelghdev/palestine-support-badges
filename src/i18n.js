@@ -63,7 +63,11 @@ const resources = {
       "Language selector":"Language selector",
       "Go to the GitHub project":"Go to the GitHub project",
       "Go to the Discord":"Go to the Discord",
-      "Go to Tech For Palestine":"Go to Tech For Palestine"
+      "Go to Tech For Palestine":"Go to Tech For Palestine",
+      "Theme": "Theme",
+      "Language": "Language",
+      "Source Code":"Source Code",
+      "Discord Community":"Discord Community"
     }
   },
   es: {
@@ -126,7 +130,11 @@ const resources = {
       "Language selector":"Selector de idioma",
       "Go to the GitHub project":"Ir al proyecto de GitHub",
       "Go to the Discord":"Ir al Discord",
-      "Go to Tech For Palestine":"Ir a Tech For Palestine"
+      "Go to Tech For Palestine":"Ir a Tech For Palestine",
+      "Theme": "Tema",
+      "Language": "Idioma",
+      "Source Code":"Código Fuente",
+      "Discord Community":"Comunidad de Discord"
     }
   }
 }
