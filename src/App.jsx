@@ -14,8 +14,8 @@ export default function App() {
   // Estados persistidos con localStorage
   const [label, setLabel] = useStickyState('Free', 'badge_label')
   const [message, setMessage] = useStickyState('Palestine', 'badge_message')
-  const [color, setColor] = useStickyState('#4cc71e', 'badge_color')
-  const [selectedLogoId, setSelectedLogoId] = useStickyState('', 'badge_selected_logo_id')
+  const [color, setColor] = useStickyState('#00b03f', 'badge_color')
+  const [selectedLogoId, setSelectedLogoId] = useStickyState('logo1', 'badge_selected_logo_id')
   const [history, setHistory] = useStickyState([], 'badge_history')
   const [toast, setToast] = useState(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -413,21 +413,6 @@ export default function App() {
         <main className="flex flex-col-reverse md:grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Form */}
           <section className="col-span-2 space-y-4">
-            <div className="grid md:grid-cols-2 gap-4">
-              <label className="flex flex-col gap-2">
-                <span className="text-sm font-medium">{t('Label')}</span>
-                <input className="border border-gray-300 rounded p-2" value={label} onChange={e => setLabel(e.target.value)} />
-              </label>
-
-              <label className="flex flex-col gap-2">
-                <span className="flex flex-row items-center text-sm font-medium">
-                  {t('Message')}
-                  <TooltipIcon content={tableInfo}/>
-                </span>
-                <input className="border border-gray-300 rounded p-2" value={message} onChange={e => setMessage(e.target.value)} />
-              </label>
-            </div>
-
             <div className="flex flex-col md:flex-row content-start items-start gap-4 mb-8">
               <div className="w-full md:w-auto">
                 <label className="text-sm font-medium">{t('Color')}</label>
@@ -442,7 +427,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="flex gap-2 mb-4 flex-wrap">
+            <div className="flex gap-2 mb-10 flex-wrap">
               <button className="w-full sm:w-auto px-3 py-2 bg-sky-600 text-white rounded hover:bg-sky-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(badgeUrl, "URL")}>{t('Copy URL')}</button>
               <button className="w-full sm:w-auto px-3 py-2 bg-rose-600 text-white rounded hover:bg-rose-700 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(`![Badge](${badgeUrl})`, "Markdown")}>{t('Copy Markdown')}</button>
               <button className="w-full sm:w-auto px-3 py-2 bg-emerald-700 text-white rounded hover:bg-emerald-800 cursor-pointer transition-all active:scale-90 disabled:opacity-50 disabled:cursor-not-allowed" onClick={() => handleCopy(`<img src=\"${badgeUrl}\" alt=\"badge\" />`, "HTML")}>{t('Copy HTML')}</button>
@@ -455,10 +440,10 @@ export default function App() {
               <code className="block p-2 font-mono bg-gray-100 rounded break-all mb-4 dark:bg-[#262b30]">{badgeUrl}</code>
 
               <h2 className="font-semibold mt-2 mb-0.5">Markdown</h2>
-              <code className="block p-2 font-mono bg-gray-100 rounded break-all mb-4 dark:bg-[#262b30]">{`![Badge](${badgeUrl})`}</code>
+              <code className="block p-2 font-mono bg-gray-100 rounded break-all mb-4 dark:bg-[#262b30]">{`![Palestine Support Badge](${badgeUrl})`}</code>
 
               <h2 className="font-semibold mt-2 mb-0.5">HTML</h2>
-              <code className="block p-2 font-mono bg-gray-100 rounded break-all dark:bg-[#262b30]">{`<img src="${badgeUrl}" alt="Badge" />`}</code>
+              <code className="block p-2 font-mono bg-gray-100 rounded break-all dark:bg-[#262b30]">{`<img src="${badgeUrl}" alt="Palestine Support Badge" />`}</code>
             </div>
           </section>
 
