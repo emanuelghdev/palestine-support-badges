@@ -413,7 +413,7 @@ export default function App() {
         <main className="flex flex-col-reverse md:grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Form */}
           <section className="col-span-2 space-y-4">
-            <div className="flex flex-col md:flex-row content-start items-start gap-4 mb-8">
+            <div className="flex flex-col md:flex-row content-start items-start gap-4 mb-10">
               <div className="w-full md:w-auto">
                 <label className="text-sm font-medium">{t('Color')}</label>
                 <div className="flex items-center gap-2 mt-1">
